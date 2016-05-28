@@ -22,12 +22,16 @@ def SnapPicture(directory=DEFAULT_DIRECTORY):
 def main():
   if len(sys.argv) != 3:
     print 'usage: python time_lapse.py interval_in_seconds /path/to/picture/directory'
+    print 'If no interval is desired, set interval_in_seconds to 0'
   else:
-    interval = float(sys.argv[1])
-    directory = sys.argv[2]
-    for unused_index in range(int(SECONDS_IN_AN_HOUR / interval)):
+    if interval != 0:
+      interval = float(sys.argv[1])
+      directory = sys.argv[2]
+      for unused_index in range(int(SECONDS_IN_AN_HOUR / interval)):
+        SnapPicture(directory=directory)
+        time.sleep(interval)
+    else:
       SnapPicture(directory=directory)
-      time.sleep(interval)
 
 
 if __name__ == '__main__':
