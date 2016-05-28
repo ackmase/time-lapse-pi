@@ -24,9 +24,10 @@ def main():
     print 'usage: python time_lapse.py interval_in_seconds /path/to/picture/directory'
     print 'If no interval is desired, set interval_in_seconds to 0'
   else:
+    interval = float(sys.argv[1])
+    directory = sys.argv[2]
+    
     if interval != 0:
-      interval = float(sys.argv[1])
-      directory = sys.argv[2]
       for unused_index in range(int(SECONDS_IN_AN_HOUR / interval)):
         SnapPicture(directory=directory)
         time.sleep(interval)
