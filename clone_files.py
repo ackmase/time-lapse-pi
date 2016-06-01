@@ -20,7 +20,10 @@ def main():
     new_filename = '%s%02d%s' % (old_filename[:14],
                                  new_minutes,
                                  old_filename[16:])
-    os.popen('cp %s %s' % (old_filename, new_filename))
+    os.popen('cp %s%s %s%s' % (directory, 
+                               old_filename, 
+                               directory,
+                               new_filename))
 
 
 if __name__ == '__main__':
